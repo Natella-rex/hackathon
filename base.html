@@ -1,0 +1,353 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+     {% block content %}
+
+    {% endblock %}
+
+
+
+
+<button class="open-button" onclick="openForm()">🎮Ask our Chatbot!</button>
+<div class="chat-popup" id="myForm">
+  <div id='popUp'>
+    <ul><b>List of available commands:</b>
+      <li>Hello/ Hi</li>
+      <li>Name</li>
+      <li>What can we do during cb</li>
+      <li>when will the cb period end</li>
+      <li>What can we do to protect ourselves</li>
+    </ul>
+  </div>
+<div id='bodybox'>
+  <div class='oneLine'>
+    <h5><center>🎮COR.ONE CHAT🎮</center></h5>
+    <div id="btnRight">
+      <button type="button" onmouseover="openPop()" onmouseout="closePop()">❔</button><button type="button" onclick="closeForm()">❌</button>
+    </div>
+  </div>
+  <div id='chatborder'>
+    <p id="chatlog7" class="chatlog">&nbsp;</p>
+    <p id="chatlog6" class="chatlog">&nbsp;</p>
+    <p id="chatlog5" class="chatlog">&nbsp;</p>
+    <p id="chatlog4" class="chatlog">&nbsp;</p>
+    <p id="chatlog3" class="chatlog">&nbsp;</p>
+    <p id="chatlog2" class="chatlog">&nbsp;</p>
+    <p id="chatlog1" class="chatlog">&nbsp;</p>
+    <input type="text" name="chat" id="chatbox" placeholder="Press Enter to send. Hover over ❔ for a list of commands." onfocus="placeHolder()">
+  </div>
+</div>
+</div>
+  <br>
+
+</section>
+<!--Section: Contact v.2-->
+<script>
+<!--collapsible-->
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+coll[i].addEventListener("click", function() {
+this.classList.toggle("active");
+var content = this.nextElementSibling;
+if (content.style.display === "block") {
+content.style.display = "none";
+} else {
+content.style.display = "block";
+}
+});
+}
+<!--To open chatbot-->
+function openForm() {
+document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+document.getElementById("myForm").style.display = "none";
+}
+function openPop() {
+document.getElementById("popUp").style.display = "block";
+}
+
+function closePop() {
+document.getElementById("popUp").style.display = "none";
+}
+<!--Chatbot response-->
+//links
+//http://eloquentjavascript.net/09_regexp.html
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+
+var messages = [], //array that hold the record of each string in chat
+lastUserMessage = "", //keeps track of the most recent input string from the user
+botMessage = "", //var keeps track of what the chatbot is going to say
+botName = 'Glist bot', //name of the chatbot
+talking = true; //when false the speach function doesn't work
+//
+//
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//edit this function to change what the chatbot says
+function chatbotResponse() {
+talking = true;
+botMessage = "I’m sorry, I don’t fully understand your question. Can you rephrase it? Alternatively, if you need further assistance, you may submit an online enquiry via our FAQ site"; //the default message
+
+if (lastUserMessage === 'hi' || lastUserMessage =='hello') {
+botMessage = 'Hello there, how may I help you?';
+}
+
+if (lastUserMessage === 'name') {
+botMessage = 'My name is ' + botName;
+}
+if (lastUserMessage === 'What can we do during cb'|| lastUserMessage === 'what can we do during the cb period' ) {
+botMessage = 'catch up on your latest shows, learn new skills or watch your favourite movies';
+}
+if (lastUserMessage === 'when will the cb period end'||lastUserMessage === 'when will cb end') {
+botMessage = 'If all conditions are good it will end at first of june';
+}
+if (lastUserMessage === 'What can we do to protect ourselves' ) {
+botMessage = 'You can follow social distancing guidlines and wear a mask when going out';
+}
+}
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//****************************************************************
+//
+//
+//
+//this runs each time enter is pressed.
+//It controls the overall input and output
+function newEntry() {
+//if the message from the user isn't empty then run
+if (document.getElementById("chatbox").value != "") {
+//pulls the value from the chatbox ands sets it to lastUserMessage
+lastUserMessage = document.getElementById("chatbox").value;
+//sets the chat box to be clear
+document.getElementById("chatbox").value = "";
+//adds the value of the chatbox to the array messages
+messages.push("<b>" + "You" + ":</b> " + lastUserMessage);
+//Speech(lastUserMessage);  //says what the user typed outloud
+//sets the variable botMessage in response to lastUserMessage
+chatbotResponse();
+//add the chatbot's name and message to the array messages
+messages.push("<b>" + botName + ":</b> " + botMessage);
+// says the message using the text to speech function written below
+Speech(botMessage);
+//outputs the last few array elements of messages to html
+for (var i = 1; i < 8; i++) {
+if (messages[messages.length - i])
+document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
+}
+}
+}
+
+//text to Speech
+//https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
+function Speech(say) {
+if ('speechSynthesis' in window && talking) {
+var utterance = new SpeechSynthesisUtterance(say);
+//msg.voice = voices[10]; // Note: some voices don't support altering params
+//msg.voiceURI = 'native';
+//utterance.volume = 1; // 0 to 1
+//utterance.rate = 0.1; // 0.1 to 10
+//utterance.pitch = 1; //0 to 2
+//utterance.text = 'Hello World';
+//utterance.lang = 'en-US';
+speechSynthesis.speak(utterance);
+}
+}
+
+//runs the keypress() function when a key is pressed
+document.onkeypress = keyPress;
+//if the key pressed is 'enter' runs the function newEntry()
+function keyPress(e) {
+var x = e || window.event;
+var key = (x.keyCode || x.which);
+if (key == 13 || key == 3) {
+//runs this function when enter is pressed
+newEntry();
+}
+if (key == 38) {
+console.log('hi')
+//document.getElementById("chatbox").value = lastUserMessage;
+}
+}
+
+//clears the placeholder text ion the chatbox
+//this function is set to run when the users brings focus to the chatbox, by clicking on it
+function placeHolder() {
+document.getElementById("chatbox").placeholder = "";
+}
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+body {
+background-color: #f5f5f5;
+}
+
+.content {
+margin-top: 50px;
+}
+
+.shift {
+margin-left: 50px;
+margin-top: -15px;
+margin-bottom: 45px;
+line-height: 1.6;
+}
+
+.customize {
+padding: 10px;
+text-align: center;
+width: 100%;
+}
+
+.title {
+margin-bottom: 50px;
+text-align: center;
+}
+
+.open-button {
+background-color: #43464B;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 23px;
+right: 28px;
+width: 280px;
+border-radius: 5px;
+}
+.btn:hover, .open-button:hover {
+opacity: 1;
+}
+
+#popUp{
+font: 12px arial, sans-serif;
+opacity: 0.9;
+background-color: lightblue;
+border-width: 1px;
+border: solid;
+}
+.chat-popup {
+display: none;
+position: fixed;
+bottom: 10px;
+right: 15px;
+border: 3px solid #f1f1f1;
+z-index: 9;
+}
+
+#bodybox {
+margin: auto;
+padding-bottom: 10px;
+max-width: 550px;
+font: 15px arial, sans-serif;
+background-color: white;
+border-style: solid;
+border-width: 1px;
+box-shadow: 5px 5px 5px grey;
+border-radius: 15px;
+}
+
+.oneLine {
+display: flex;
+justify-content: flex-end;
+}
+
+#btnRight {
+margin-left: 75px;
+}
+
+#chatborder {
+height: 410px;
+width: 395px;
+border-style: solid;
+background-color: #f6f9f6;
+border-width: 1px;
+padding: 10px;
+margin: 10px;
+border-radius: 15px;
+}
+
+.chatlog {
+font: 14px arial, sans-serif;
+}
+
+#chatbox {
+font: 13px arial, sans-serif;
+position: static;
+height: 22px;
+width: 100%;
+}
+
+</style>
+
+
+</div>
+
+{% block scripts %}
+
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/jquery.easing.1.3.js"></script>
+  <script src="/static/js/jquery.waypoints.min.js"></script>
+  <script src="/static/js/jquery.stellar.min.js"></script>
+  <script src="/static/js/owl.carousel.min.js"></script>
+  <script src="/static/js/jquery.magnific-popup.min.js"></script>
+  <script src="/static/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="/static/js/google-map.js"></script>
+  <script src="/static/js/main.js"></script>
+
+{% endblock %}
+
+</body>
+
+</html>

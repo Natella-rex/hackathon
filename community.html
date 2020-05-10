@@ -1,0 +1,226 @@
+
+{% extends "base.html" %}
+{% block title %}COR. ONE{% endblock %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/ico" href="cor.one icon.jpeg" />
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">\
+
+
+
+    <div class="container pt-5 pb-4">
+			<div class="row justify-content-between">
+				<div class="col-md-8 order-md-last">
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<a class="navbar-brand" href="index.html">COR.<span>ONE</span></a>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-md-4 d-flex">
+					<div class="social-media">
+		    		<p class="mb-0 d-flex">
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+		    			<a href="https://www.instagram.com/cor.one999/" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+		    		</p>
+	        </div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+	        	<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/game" class="nav-link">Games</a></li>
+	        	<li class="nav-item"><a href="/news" class="nav-link">News</a></li>
+				<li class="nav-item active"><a href="/community" class="nav-link">Community</a></li>
+				<li class="nav-item"><a href="/aboutus" class="nav-link">About us</a></li>
+	        	<li class="nav-item"><a href="/contactus" class="nav-link">Contact</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+
+
+    <style>
+
+
+
+    .whocontainer {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+
+    .whocentered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .commPadding{
+      padding: 80px;
+    }
+    .flipText{
+      padding: 70px;
+      font-size:20px;
+    }
+    #noticeMsg {
+      background-color: white;
+      max-width: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .column {
+      float: left;
+      width: 25%;
+      padding: 25px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 300px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+      background-color: #bbb;
+      color: black;
+    }
+
+    .flip-card-back {
+      background-color: #B2DAFA;
+      color: white;
+      transform: rotateY(180deg);
+    }
+    </style>
+
+
+		</head>
+    <body>
+      <div class="whocontainer">
+        <img src="static/images/community.jpg" alt="community" style="width:100%; opacity: 0.3;">
+        <div class="whocentered"><h1 style="color:#10C9AC"><center><b>Community</b><center></h1></div>
+      </div>
+      <section class="commPadding"><center>
+        <h2>Community Page</h2><br>
+      <p>Hover over the images for more information! Click on the various types of blog!! <br></p>
+      <div class="row">
+        <div class="column">
+          <a href="/bakecook">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="static/images/Baking.jpg" alt="Baking & Coooking" style="width: 300px; height: 300px;">
+              </div>
+              <div class="flip-card-back">
+                <p class="flipText">Can't go out to eat your favourite food? Try making your own!</p></a>
+              </div>
+            </div>
+          </div>
+        </a>
+         </div>
+        <div class="column">
+          <a href="/exercise">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="static/images/Exercise2.jpg" alt="Exercise" style="width: 300px; height: 300px;">
+              </div>
+              <div class="flip-card-back">
+                <p class="flipText">Trying to keep fit during circuit breaker? Here are some tips for you.</p></a>
+              </div>
+            </div>
+          </div>
+        </a>
+         </div>
+        <div class="column">
+          <a href="/gamemovie">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="static/images/Game.jpg" alt="Games & Movies" style="width: 300px; height: 300px;">
+              </div>
+              <div class="flip-card-back">
+                <p class="flipText">Grab your popcorn & check out the new releases!</p></a>
+              </div>
+            </div>
+          </div>
+        </a>
+         </div>
+        <div class="column">
+          <a href="/art">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="static/images/Arts.jpg" alt="Arts" style="width: 300px; height: 300px;">
+              </div>
+              <div class="flip-card-back">
+                <p class="flipText">Enhance your Creativity here! From dance & DIY craft hacks!</p></a>
+              </div>
+            </div>
+          </div>
+        </a>
+         </div>
+       </section>
+     </center>
+    </body>
+{% endblock %}
